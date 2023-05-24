@@ -7,15 +7,19 @@ for (let i = 0; i < numeroDeBotoes; i++) {
         let botaoClicado = this.innerHTML
 
         emitirSom(botaoClicado)
+        botaoAnimado(botaoClicado)
 
-        
     });
 }
+
 addEventListener('keydown', function (event){
     emitirSom(event.key)
+    botaoAnimado(event.key)
+
 })
 
 function emitirSom(key){
+
     switch (key) {
         case "w":
             let tom1 = new Audio('sounds/tom-1.mp3')
@@ -49,7 +53,17 @@ function emitirSom(key){
     }
 }
 
+function botaoAnimado (botaoAtual){
 
+    console.log(botaoAtual)
+    let teclaCliclada = document.querySelector("." + botaoAtual)
+
+    teclaCliclada.classList.add('pressed')
+
+    setTimeout(function(){
+        teclaCliclada.classList.remove('pressed')
+    }, 100)
+}
 
 
 
